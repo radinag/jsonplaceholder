@@ -1,0 +1,29 @@
+<div id="item"></div>
+
+
+<script src="http://code.jquery.com/jquery-3.3.1.js"></script>
+
+<script>
+
+    
+$.ajax(
+	{
+		method: "GET",
+		url: "https://jsonplaceholder.typicode.com/posts",
+		dataType: "json"
+	}
+).done(
+	function( data ) {
+	    console.log( "Got it!", data );
+	    for ( var i = 0; i < data.length; i++ ) {
+            console.log(data[i].title);
+            $('#item').html(
+                $('#item').html() + '<p>' + data[i].title + '</p>');            
+	    }
+	}).fail(
+		function( err ){
+	    console.log( "Failed!", err );
+	}
+);
+
+</script>
